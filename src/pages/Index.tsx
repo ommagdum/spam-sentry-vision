@@ -1,13 +1,10 @@
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Shield, Mail, LineChart, RefreshCw } from "lucide-react";
 import { useState } from "react";
 
 const Index = () => {
-  const [email, setEmail] = useState("");
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
@@ -31,12 +28,6 @@ const Index = () => {
             Analyze Your Email
           </h2>
           <div className="space-y-4">
-            <Input
-              type="text"
-              placeholder="Email Subject"
-              className="w-full"
-              onChange={(e) => setEmail(e.target.value)}
-            />
             <Textarea
               placeholder="Paste email content here..."
               className="w-full min-h-[200px]"
