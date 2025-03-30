@@ -1,14 +1,31 @@
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Shield, Mail, LineChart, RefreshCw } from "lucide-react";
+import { Shield, Mail, LineChart, RefreshCw, LogIn, UserPlus } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      {/* Header with Auth Links */}
+      <header className="container px-4 pt-6 mx-auto">
+        <div className="flex justify-end gap-4">
+          <Link to="/login">
+            <Button variant="outline" className="flex items-center gap-2 hover-lift">
+              <LogIn className="w-4 h-4" /> Sign In
+            </Button>
+          </Link>
+          <Link to="/register">
+            <Button className="flex items-center gap-2 hover-lift">
+              <UserPlus className="w-4 h-4" /> Sign Up
+            </Button>
+          </Link>
+        </div>
+      </header>
+      
       {/* Hero Section */}
-      <section className="container px-4 pt-32 pb-20 mx-auto text-center fade-in">
+      <section className="container px-4 pt-24 pb-20 mx-auto text-center fade-in">
         <span className="px-4 py-1.5 text-sm font-medium text-primary-foreground bg-primary rounded-full">
           Powered by AI
         </span>
