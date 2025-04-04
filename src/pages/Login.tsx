@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Lock, LogIn, ChevronLeft } from "lucide-react";
+import { Mail, Lock, LogIn } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Login = () => {
@@ -38,24 +38,17 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black earth-background px-4">
-      <div className="absolute top-6 left-6">
-        <Link to="/" className="text-white/80 hover:text-white flex items-center">
-          <ChevronLeft className="w-4 h-4 mr-1" />
-          Back
-        </Link>
-      </div>
-      
-      <div className="w-full max-w-md z-10">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 px-4">
+      <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white">Welcome back</h2>
-          <p className="mt-2 text-white/70">Sign in to your account</p>
+          <h2 className="text-3xl font-bold text-gray-900">Welcome back</h2>
+          <p className="mt-2 text-gray-600">Sign in to your account to continue</p>
         </div>
         
-        <Card className="glass-card border-white/10">
+        <Card className="glass-card">
           <CardHeader>
-            <CardTitle className="text-xl text-center text-white">Sign In</CardTitle>
-            <CardDescription className="text-center text-white/60">
+            <CardTitle className="text-xl text-center">Sign In</CardTitle>
+            <CardDescription className="text-center">
               Enter your credentials to access your account
             </CardDescription>
           </CardHeader>
@@ -63,11 +56,11 @@ const Login = () => {
             <form onSubmit={handleLogin} className="space-y-4">
               <div className="space-y-2">
                 <div className="relative">
-                  <Mail className="absolute left-3 top-3 h-4 w-4 text-white/50" />
+                  <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="email"
                     placeholder="Email"
-                    className="pl-10 bg-white/10 border-white/10 text-white"
+                    className="pl-10"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -76,11 +69,11 @@ const Login = () => {
               
               <div className="space-y-2">
                 <div className="relative">
-                  <Lock className="absolute left-3 top-3 h-4 w-4 text-white/50" />
+                  <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="password"
                     placeholder="Password"
-                    className="pl-10 bg-white/10 border-white/10 text-white"
+                    className="pl-10"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -89,7 +82,7 @@ const Login = () => {
               
               <Button 
                 type="submit" 
-                className="w-full bg-primary hover:bg-primary/90 hover-lift"
+                className="w-full hover-lift"
                 disabled={isLoading}
               >
                 {isLoading ? (
@@ -116,7 +109,7 @@ const Login = () => {
                 Forgot password?
               </Link>
             </div>
-            <div className="w-full text-center text-sm text-white/70">
+            <div className="w-full text-center text-sm">
               Don't have an account?{" "}
               <Link to="/register" className="text-primary hover:underline font-medium">
                 Sign up
@@ -124,6 +117,12 @@ const Login = () => {
             </div>
           </CardFooter>
         </Card>
+        
+        <div className="mt-6 text-center">
+          <Link to="/" className="text-sm text-gray-600 hover:text-primary">
+            Back to home
+          </Link>
+        </div>
       </div>
     </div>
   );

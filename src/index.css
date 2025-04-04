@@ -7,33 +7,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
 
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 214 100% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 262 83.3% 57.8%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 222 47% 11%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 217 33% 17%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 214 100% 50%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262 83.3% 57.8%;
     --radius: 0.75rem;
   }
 }
@@ -48,7 +48,7 @@
 }
 
 .glass-card {
-  @apply bg-black/40 backdrop-blur-lg border border-white/10 shadow-lg;
+  @apply bg-white/80 backdrop-blur-lg border border-white/20 shadow-lg;
 }
 
 .hover-lift {
@@ -74,7 +74,7 @@
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.8) 50%,
     rgba(255, 255, 255, 0) 100%
   );
   background-size: 200% 100%;
@@ -88,49 +88,4 @@
   100% {
     background-position: -200% 0;
   }
-}
-
-.cosmic-star {
-  position: relative;
-}
-
-.cosmic-star::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(0,122,255,0.4) 30%, transparent 70%);
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
-.earth-background {
-  background-image: url('/lovable-uploads/3290cf3b-8f56-484c-90c0-0daa14556efa.png');
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-}
-
-.section-number {
-  @apply text-3xl font-bold text-white/20;
-}
-
-.navigation-link {
-  @apply relative mx-4 py-2 text-white/80 hover:text-white transition-colors;
-}
-
-.navigation-link.active {
-  @apply text-white;
-}
-
-.navigation-link::after {
-  content: '';
-  @apply absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300;
-}
-
-.navigation-link:hover::after,
-.navigation-link.active::after {
-  @apply w-full;
 }

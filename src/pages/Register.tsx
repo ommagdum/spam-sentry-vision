@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Lock, UserCircle, UserPlus, ChevronLeft } from "lucide-react";
+import { Mail, Lock, User, UserPlus } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
@@ -28,10 +28,10 @@ const Register = () => {
       return;
     }
     
-    if (!agreeTerms) {
+    if (!acceptTerms) {
       toast({
         title: "Error",
-        description: "Please agree to the terms and conditions",
+        description: "Please accept the terms and conditions",
         variant: "destructive",
       });
       return;
@@ -43,43 +43,36 @@ const Register = () => {
     setTimeout(() => {
       toast({
         title: "Success",
-        description: "Your account has been created",
+        description: "Your account has been created successfully",
       });
       setIsLoading(false);
     }, 1500);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black earth-background px-4">
-      <div className="absolute top-6 left-6">
-        <Link to="/" className="text-white/80 hover:text-white flex items-center">
-          <ChevronLeft className="w-4 h-4 mr-1" />
-          Back
-        </Link>
-      </div>
-      
-      <div className="w-full max-w-md z-10">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 px-4 py-12">
+      <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white">Create Account</h2>
-          <p className="mt-2 text-white/70">Join us to get started</p>
+          <h2 className="text-3xl font-bold text-gray-900">Create an account</h2>
+          <p className="mt-2 text-gray-600">Join us to protect your inbox from spam</p>
         </div>
         
-        <Card className="glass-card border-white/10">
+        <Card className="glass-card">
           <CardHeader>
-            <CardTitle className="text-xl text-center text-white">Sign Up</CardTitle>
-            <CardDescription className="text-center text-white/60">
-              Enter your details to create your account
+            <CardTitle className="text-xl text-center">Sign Up</CardTitle>
+            <CardDescription className="text-center">
+              Fill in your details to create an account
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleRegister} className="space-y-4">
               <div className="space-y-2">
                 <div className="relative">
-                  <UserCircle className="absolute left-3 top-3 h-4 w-4 text-white/50" />
+                  <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="text"
                     placeholder="Full Name"
-                    className="pl-10 bg-white/10 border-white/10 text-white"
+                    className="pl-10"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -88,11 +81,11 @@ const Register = () => {
               
               <div className="space-y-2">
                 <div className="relative">
-                  <Mail className="absolute left-3 top-3 h-4 w-4 text-white/50" />
+                  <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="email"
                     placeholder="Email"
-                    className="pl-10 bg-white/10 border-white/10 text-white"
+                    className="pl-10"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -101,11 +94,11 @@ const Register = () => {
               
               <div className="space-y-2">
                 <div className="relative">
-                  <Lock className="absolute left-3 top-3 h-4 w-4 text-white/50" />
+                  <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="password"
                     placeholder="Password"
-                    className="pl-10 bg-white/10 border-white/10 text-white"
+                    className="pl-10"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -115,15 +108,14 @@ const Register = () => {
               <div className="flex items-center space-x-2">
                 <Checkbox 
                   id="terms" 
-                  checked={agreeTerms}
-                  onCheckedChange={(checked) => setAgreeTerms(checked as boolean)}
-                  className="border-white/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                  checked={acceptTerms}
+                  onCheckedChange={(checked) => setAcceptTerms(checked as boolean)}
                 />
                 <label
                   htmlFor="terms"
-                  className="text-sm font-medium leading-none text-white/70 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  I agree to the{" "}
+                  I accept the{" "}
                   <Link to="#" className="text-primary hover:underline">
                     terms and conditions
                   </Link>
@@ -132,7 +124,7 @@ const Register = () => {
               
               <Button 
                 type="submit" 
-                className="w-full bg-primary hover:bg-primary/90 hover-lift"
+                className="w-full hover-lift"
                 disabled={isLoading}
               >
                 {isLoading ? (
@@ -153,8 +145,8 @@ const Register = () => {
               </Button>
             </form>
           </CardContent>
-          <CardFooter className="flex flex-col space-y-4">
-            <div className="w-full text-center text-sm text-white/70">
+          <CardFooter className="flex justify-center">
+            <div className="text-center text-sm">
               Already have an account?{" "}
               <Link to="/login" className="text-primary hover:underline font-medium">
                 Sign in
@@ -162,6 +154,12 @@ const Register = () => {
             </div>
           </CardFooter>
         </Card>
+        
+        <div className="mt-6 text-center">
+          <Link to="/" className="text-sm text-gray-600 hover:text-primary">
+            Back to home
+          </Link>
+        </div>
       </div>
     </div>
   );
