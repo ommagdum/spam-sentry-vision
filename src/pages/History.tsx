@@ -64,10 +64,10 @@ const History = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-gray-100">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
       <div className="container px-4 py-8 mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Prediction History</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Prediction History</h1>
           
           <Button 
             variant="destructive" 
@@ -79,16 +79,16 @@ const History = () => {
           </Button>
         </div>
 
-        <Card className="bg-gray-800/50 border-gray-700">
+        <Card className="glass-card">
           <CardHeader>
             <CardTitle>Email Analysis History</CardTitle>
-            <CardDescription className="text-gray-400">
+            <CardDescription className="text-gray-600">
               Your recent email checks with prediction results
             </CardDescription>
           </CardHeader>
           <CardContent>
             {historyData.length === 0 ? (
-              <div className="text-center py-10 text-gray-400">
+              <div className="text-center py-10 text-gray-500">
                 <p className="text-xl mb-2">No history yet</p>
                 <p>Your email analysis history will appear here</p>
               </div>
@@ -106,14 +106,14 @@ const History = () => {
                   </TableHeader>
                   <TableBody>
                     {historyData.map((item) => (
-                      <TableRow key={item.id} className="border-gray-700 hover:bg-gray-800/50">
+                      <TableRow key={item.id} className="border-gray-200 hover:bg-gray-50">
                         <TableCell className="font-medium">{truncateText(item.content, 40)}</TableCell>
                         <TableCell>{item.date}</TableCell>
                         <TableCell>
                           <span className={`px-2 py-1 rounded-full text-xs ${
                             item.prediction === "Spam" 
-                              ? "bg-primary/20 text-primary" 
-                              : "bg-green-500/20 text-green-500"
+                              ? "bg-red-100 text-red-600" 
+                              : "bg-green-100 text-green-600"
                           }`}>
                             {item.prediction}
                           </span>
@@ -124,7 +124,7 @@ const History = () => {
                             <Button 
                               variant="outline"
                               size="sm"
-                              className="border-gray-700 hover:bg-gray-700"
+                              className="border-gray-200 hover:bg-gray-50"
                               disabled={isLoading}
                               onClick={() => handleFeedback(item.id, true)}
                             >
@@ -133,7 +133,7 @@ const History = () => {
                             <Button 
                               variant="outline"
                               size="sm"
-                              className="border-gray-700 hover:bg-gray-700"
+                              className="border-gray-200 hover:bg-gray-50"
                               disabled={isLoading}
                               onClick={() => handleFeedback(item.id, false)}
                             >
@@ -155,3 +155,4 @@ const History = () => {
 };
 
 export default History;
+

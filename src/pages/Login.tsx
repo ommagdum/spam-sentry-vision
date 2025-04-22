@@ -51,20 +51,20 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-gray-100">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
       <Navigation />
       
       <div className="flex items-center justify-center px-4 py-16">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-white">Welcome back</h2>
-            <p className="mt-2 text-gray-400">Sign in to your account to continue</p>
+            <h2 className="text-3xl font-bold text-gray-900">Welcome back</h2>
+            <p className="mt-2 text-gray-600">Sign in to your account to continue</p>
           </div>
           
-          <Card className="bg-gray-800/50 border-gray-700">
+          <Card className="glass-card">
             <CardHeader>
               <CardTitle className="text-xl text-center">Sign In</CardTitle>
-              <CardDescription className="text-center text-gray-400">
+              <CardDescription className="text-center text-gray-600">
                 Enter your credentials to access your account
               </CardDescription>
             </CardHeader>
@@ -76,7 +76,7 @@ const Login = () => {
                     <Input
                       type="email"
                       placeholder="Email"
-                      className="pl-10 bg-gray-700/50 border-gray-600 text-white placeholder:text-gray-400"
+                      className="pl-10 bg-white border-gray-200 text-gray-900 placeholder:text-gray-400"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -89,7 +89,7 @@ const Login = () => {
                     <Input
                       type="password"
                       placeholder="Password"
-                      className="pl-10 bg-gray-700/50 border-gray-600 text-white placeholder:text-gray-400"
+                      className="pl-10 bg-white border-gray-200 text-gray-900 placeholder:text-gray-400"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -146,3 +146,4 @@ const Login = () => {
 };
 
 export default Login;
+
