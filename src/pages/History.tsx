@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { 
   Card, 
@@ -11,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/hooks/use-toast";
 
-// Mock data for now
 const initialHistoryData = [
   { id: 1, content: "Special offer just for you...", date: "2025-04-20", prediction: "Spam", confidence: "98%" },
   { id: 2, content: "Meeting notes from yesterday", date: "2025-04-19", prediction: "Ham", confidence: "95%" },
@@ -30,7 +28,6 @@ const History = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  // This would be replaced with actual API calls
   useEffect(() => {
     // Fetch user history
   }, []);
@@ -155,4 +152,3 @@ const History = () => {
 };
 
 export default History;
-

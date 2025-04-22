@@ -67,7 +67,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-gray-100">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
       <div className="container px-4 py-8 mx-auto">
         <h1 className="text-3xl font-bold mb-8 text-center md:text-left">
           Your Dashboard
@@ -81,7 +81,7 @@ const Dashboard = () => {
 
           <TabsContent value="overview" className="fade-in">
             <div className="grid gap-6 md:grid-cols-4">
-              <Card className="bg-gray-800/50 border-gray-700">
+              <Card className="glass-card">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg">Total Checks</CardTitle>
                 </CardHeader>
@@ -90,7 +90,7 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
               
-              <Card className="bg-gray-800/50 border-gray-700">
+              <Card className="glass-card">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg">Spam Detected</CardTitle>
                 </CardHeader>
@@ -99,7 +99,7 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
               
-              <Card className="bg-gray-800/50 border-gray-700">
+              <Card className="glass-card">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg">Ham Detected</CardTitle>
                 </CardHeader>
@@ -108,7 +108,7 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
               
-              <Card className="bg-gray-800/50 border-gray-700">
+              <Card className="glass-card">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg">Accuracy</CardTitle>
                 </CardHeader>
@@ -119,10 +119,10 @@ const Dashboard = () => {
             </div>
 
             <div className="grid gap-6 mt-6 md:grid-cols-2">
-              <Card className="bg-gray-800/50 border-gray-700">
+              <Card className="glass-card">
                 <CardHeader>
                   <CardTitle>Spam vs Ham Ratio</CardTitle>
-                  <CardDescription className="text-gray-400">Distribution of detected emails</CardDescription>
+                  <CardDescription className="text-gray-600">Distribution of detected emails</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="h-80">
@@ -165,10 +165,10 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-800/50 border-gray-700">
+              <Card className="glass-card">
                 <CardHeader>
                   <CardTitle>Detection Trend</CardTitle>
-                  <CardDescription className="text-gray-400">Monthly detection statistics</CardDescription>
+                  <CardDescription className="text-gray-600">Monthly detection statistics</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="h-80">
@@ -180,9 +180,9 @@ const Dashboard = () => {
                     >
                       <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={lineChartData}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                          <XAxis dataKey="name" stroke="#aaa" />
-                          <YAxis stroke="#aaa" />
+                          <CartesianGrid strokeDasharray="3 3" stroke="#ddd" />
+                          <XAxis dataKey="name" stroke="#666" />
+                          <YAxis stroke="#666" />
                           <ChartTooltip content={<ChartTooltipContent />} />
                           <Line type="monotone" dataKey="spam" stroke="#9b87f5" strokeWidth={2} />
                           <Line type="monotone" dataKey="ham" stroke="#82ca9d" strokeWidth={2} />
@@ -196,10 +196,10 @@ const Dashboard = () => {
           </TabsContent>
 
           <TabsContent value="history" className="fade-in">
-            <Card className="bg-gray-800/50 border-gray-700">
+            <Card className="glass-card">
               <CardHeader>
                 <CardTitle>Email Check History</CardTitle>
-                <CardDescription className="text-gray-400">
+                <CardDescription className="text-gray-600">
                   Your recent email analysis results
                 </CardDescription>
               </CardHeader>
@@ -217,14 +217,14 @@ const Dashboard = () => {
                     </TableHeader>
                     <TableBody>
                       {historyData.map((item) => (
-                        <TableRow key={item.id} className="border-gray-700">
+                        <TableRow key={item.id} className="border-gray-200">
                           <TableCell className="font-medium">{truncateText(item.content, 30)}</TableCell>
                           <TableCell>{item.date}</TableCell>
                           <TableCell>
                             <span className={`px-2 py-1 rounded-full text-xs ${
                               item.prediction === "Spam" 
-                                ? "bg-primary/20 text-primary" 
-                                : "bg-green-500/20 text-green-500"
+                                ? "bg-red-100 text-red-600" 
+                                : "bg-green-100 text-green-600"
                             }`}>
                               {item.prediction}
                             </span>
@@ -235,7 +235,7 @@ const Dashboard = () => {
                               <Button 
                                 variant="outline"
                                 size="sm"
-                                className="border-gray-700 hover:bg-gray-700"
+                                className="border-gray-200 hover:bg-gray-50"
                                 onClick={() => alert(`Feedback submitted for ${item.id}`)}
                               >
                                 👍
@@ -243,7 +243,7 @@ const Dashboard = () => {
                               <Button 
                                 variant="outline"
                                 size="sm"
-                                className="border-gray-700 hover:bg-gray-700"
+                                className="border-gray-200 hover:bg-gray-50"
                                 onClick={() => alert(`Feedback submitted for ${item.id}`)}
                               >
                                 👎
